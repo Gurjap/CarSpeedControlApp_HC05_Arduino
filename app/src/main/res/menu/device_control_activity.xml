@@ -1,0 +1,13 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_action_device_bluetooth"
+        android:title="@string/action_bluetooth" />
+
+
+
+    <item
+    android:id="@+id/menu_about"
+    android:title="About" />
+</menu>

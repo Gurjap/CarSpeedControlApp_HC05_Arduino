@@ -1,0 +1,69 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+   >
+
+
+    <TextView
+        android:id="@+id/speed_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:enabled="true"
+
+        android:text="Car Control Panel "
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:layout_marginBottom="133dp"
+        android:layout_above="@+id/stop_btn"
+        android:layout_alignLeft="@+id/direction_seekbar"
+        android:layout_alignStart="@+id/direction_seekbar" />
+
+    <com.example.gurjap.carspeedcontrol.CustomSeekBar
+        android:layout_height="wrap_content"
+        android:id="@+id/speed_seekbar"
+        android:rotation="270"
+        android:layout_width="300dp"
+        android:progressDrawable="@android:color/transparent"
+        android:max="199"
+        android:layout_marginBottom="48dp"
+        android:layout_alignBottom="@+id/speed_view"
+        android:layout_centerHorizontal="true" />
+
+    <com.example.gurjap.carspeedcontrol.CustomSeekBar
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="77dp"
+        android:id="@+id/direction_seekbar"
+        android:progressDrawable="@android:color/transparent"
+        android:max="199"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/speed_seekbar"
+        android:layout_alignStart="@+id/speed_seekbar" />
+
+    <Button
+
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/stop_btn"
+        android:drawable="@drawable/stop_vtn"
+        android:elevation="0dp"
+        android:background="@drawable/stop_vtn"
+        android:layout_above="@+id/direction_seekbar"
+        android:layout_centerHorizontal="true" />
+
+    <ToggleButton
+        android:text="Horn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/horn"
+        android:layout_alignBaseline="@+id/speed_view"
+        android:layout_alignBottom="@+id/speed_view"
+        android:layout_alignRight="@+id/speed_seekbar"
+        android:layout_alignEnd="@+id/speed_seekbar"
+        android:textOff="Horn"
+        android:textOn="Horn" />
+
+</RelativeLayout>

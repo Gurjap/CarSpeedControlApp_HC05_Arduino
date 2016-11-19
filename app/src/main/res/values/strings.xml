@@ -1,0 +1,181 @@
+<resources>
+    <string name="app_name">BlueCar</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">BlueCar</string>
+
+    <!-- prefence keys, no translation needed -->
+    <string name="pref_commands_mode">pref_commands_mode</string>
+    <string name="pref_checksum_mode">pref_checksum_mode</string>
+    <string name="pref_commands_ending">pref_commands_ending</string>
+    <string name="pref_answer_ending">pref_answer_ending</string>
+    <string name="pref_log_timing">pref_log_timing</string>
+    <string name="pref_log_direction">pref_log_direction</string>
+    <string name="pref_need_clean">pref_need_clean</string>
+    <!-- prefence keys, no translation needed -->
+
+
+    <string name="msg_not_connected">not connected</string>
+    <string name="msg_connecting">connecting…</string>
+    <string name="msg_connected">connected</string>
+
+    <string name="action_bluetooth">BT Connect/Disconnect</string>
+    <string name="no_bt_support">Your device doesn\'t support bluetooth.</string>
+    <string name="empty_device_name">&lt;New device&gt;</string>
+
+    <string name="menu_send">Send log…</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_clear">Clear history</string>
+
+    <string name="select_device">Select device</string>
+    <string name="search_message">Search for devices…</string>
+    <string name="title_paired_devices">Paired devices</string>
+    <string name="title_other_devices">Other devices</string>
+    <string name="none_paired">No paired devices</string>
+    <string name="none_found">Not found</string>
+    <string name="command_hint">Enter command here</string>
+    <string name="button_send">Send</string>
+
+    <!-- Настройки -->
+    <string name="log_settings_category">Command history:</string>
+
+    <string name="log_time">Time</string>
+    <string name="log_time_summary">Show time in log</string>
+    <string name="log_direction">Direction</string>
+    <string name="log_direction_summary">Show I/O direction in log</string>
+
+    <string name="commands_mode">Input mode:</string>
+    <string name="checksum_mode">Checksum</string>
+    <string name="checksum_mode_summary">Add checksum to command</string>
+    <string name="commands_mode_summary">Select input mode</string>
+    <string name="commands_ending_summary">Select ending</string>
+
+    <string name="answer_mode">Answer mode:</string>
+    <string name="answer_ending_summary">Select answer ending</string>
+
+    <string name="need_clean">Clear previous command</string>
+    <string name="need_clean_summary">Cleanup command view after sending</string>
+    <string name="title_activity_main3">Main3Activity</string>
+
+
+    <string name="about_title">Title:-</string>
+    <string name="about_title_content">Smart navigation system for vehicles to avoid  collision/road accident.</string>
+    <string name="about_obj">Objective:-</string>
+    <string name="about_obj_content">1.To design and implement a system for detecting nearby vehicles and to plot their position on a map using GPS and ZigBee module.
+    \n2.To calculate the speed of vehicles.
+    \n3.To know in advance about traffic.
+    \n4.To reduce unpredictable accidents.
+</string>
+    <string name="about_Problem">Problem formulation:-
+</string>
+    <string name="about_problem_content">The number of vehicles are increasing on the road day by day very fastly. This has resulted in increased delay in junctions and an increased rate of accidents. The inability to see vehicles at turns also results in accidents. But the intensity of this condition can be reduced by using latest technologies. We have thought of, and designed a system which would show all the vehicles in a specific range on a map.
+The system would comprise of several nodes, one node each on a vehicle. A node consists of a mobile application and a ZigBee device. The mobile application would access GPS data and determine the co-ordinates (latitude and longitude). This co-ordinate information would then be transferred to ZigBee device which would broadcast the data. When a node receives broadcast information from any other node, it takes the co-ordinates and plots a marker on the map. In this way, we can see all the vehicles in a specific range. The range depends on the zigbee device and ideally it provides a range of 1 mile(1.6 km).
+</string>
+    <string name="about_description">Description:-</string>
+    <string name="about_decription_content">In this project we are using android device with GPS that will give the current location. It will be read by our android application and transmitted by using bluetooth module to controller and controller will transmit the location by using zigbee module to broadcast our location that is accessed by nearby zigbee module. ZigBee receives the signal and gives the data to the microcontroller,further microcontroller transmit the data through bluetooth to android device .it plots a marker on the map by taking the co-ordinates and by takingand they can see our location. Through this project,we can also calculate the speed of the vehicles.this project will be helpful to predict the vehicles around us resulting we can avoid the unpredictable accident at turning and at the place of inability to see the vehicles.
+</string>
+    <string name="about_block">Block diagram:-
+</string>
+    <string name="about_components">Components required:-
+</string>
+    <string name="about_component_content">Android system with GPS
+\nBluetooth Module
+\nZigBee Module
+\nMicrocontroller
+\nResistor
+\nCapacitor
+\nPower supply
+\nCrystal
+\nPrinted circuit board(PCB)
+\nSoldering wire
+\nConnecting wires
+\nAndroid application
+</string>
+    <string name="about_application">Applications:-
+</string>
+    <string name="about_application_content">Helps to detect nearby vehicles at turns.
+\nHelps to know the least busy way at a junction.
+\nHelps to decide alternate paths to avoid traffic jam.
+\nHelps to detect emergency vehicles like Ambulance coming behind, and to give way effectively.
+\nHelps to detect overspeeding vehicles coming on our way to avoid unpredictable accident.
+</string>
+    <string name="about_future_scope">Future scope:</string>
+    <string name="about_future_scope_content">Special protocol can be included to detect the type of vehicle.
+\nThe type of vehicle, like emergency vehicles can be plotted specially on the map.
+\nThe speed of vehicles can also be plotted.
+\nOverspeeding vehicles can be plotted with warning sign.
+</string>
+    <string name="title_activity_settings_activityid">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+
+</resources>
