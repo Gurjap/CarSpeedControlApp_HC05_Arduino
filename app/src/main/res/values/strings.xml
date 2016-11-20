@@ -12,8 +12,8 @@
     <string name="pref_log_direction">pref_log_direction</string>
     <string name="pref_need_clean">pref_need_clean</string>
     <!-- prefence keys, no translation needed -->
-
-
+    <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
+    <string name="speech_prompt_msg">Control it by Voice</string>
     <string name="msg_not_connected">not connected</string>
     <string name="msg_connecting">connecting…</string>
     <string name="msg_connected">connected</string>

@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.LogWriter;
 import android.support.v7.widget.*;
+import java.util.ArrayList;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +18,10 @@ import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.ToggleButton;
 import android.widget.Toast;
+import android.speech.RecognizerIntent;
 
+import android.widget.ImageView;
+import java.util.Locale;
 
 import java.lang.ref.WeakReference;
 import java.text.DecimalFormat;
@@ -33,11 +37,11 @@ public final class DeviceControlActivity extends BaseActivity  {
 
     private static DeviceConnector connector;
     private static BluetoothResponseHandler mHandler;
-
+    private final int REq_code = 100;
     SeekBar speed;
-ToggleButton horn;
+    ToggleButton horn;
     SeekBar direction;
-    AppCompatTextView speed_view;
+    AppCompatTextView speed_view,speech_view;
   //  AppCompatTextView reply_view;
     AppCompatButton stop_btn;
 
@@ -46,7 +50,7 @@ ToggleButton horn;
     static DeviceControlActivity a=new DeviceControlActivity();
     String speed_var="00";
     String Direction_var="00";
-
+ImageView mic;
       @Override
 
     protected void onCreate(Bundle savedInstanceState)
@@ -61,7 +65,8 @@ ToggleButton horn;
         speed= (SeekBar) findViewById(R.id.speed_seekbar);
         direction= (SeekBar) findViewById(R.id.direction_seekbar);
         horn= (ToggleButton) findViewById(R.id.horn);
-
+mic= (ImageView) findViewById(R.id.mic);
+speech_view= (AppCompatTextView) findViewById(R.id.speech_view);
 stop_btn= (AppCompatButton) findViewById(R.id.stop_btn);
 
         stop_btn.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +94,12 @@ onchange_values();
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
+            }
+        });
+        mic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotopromtmic();
             }
         });
         horn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -135,6 +146,24 @@ onchange_values();
 
     }
 
+    private void gotopromtmic() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                getString(R.string.speech_prompt_msg));
+        try {
+            startActivityForResult(intent, REq_code);
+        } catch (Exception a) {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.speech_not_supported),
+                    Toast.LENGTH_SHORT).show();
+        }
+
+
+
+    }
 
 
 
@@ -260,22 +289,21 @@ Direction_var=Direction_var+"R";
 
     }
 
-
     @Override
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         switch (requestCode) {
-            case REQUEST_CONNECT_DEVICE:
-                if (resultCode == Activity.RESULT_OK) {
-                    String address = data.getStringExtra(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
-                    BluetoothDevice device = btAdapter.getRemoteDevice(address);
-                    if (super.isAdapterReady() && (connector == null)) setupConnector(device);
+            case REq_code: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    speech_view.setText(result.get(0));
                 }
                 break;
-            case REQUEST_ENABLE_BT:
-               super.pendingRequestEnableBt = false;
-                break;
+            }
+
         }
     }
 

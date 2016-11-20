@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -65,5 +66,23 @@
         android:layout_alignEnd="@+id/speed_seekbar"
         android:textOff="Horn"
         android:textOn="Horn" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/mic"
+        android:id="@+id/mic"
+        android:layout_above="@+id/speed_seekbar"
+        android:layout_alignRight="@+id/speed_seekbar"
+        android:layout_alignEnd="@+id/speed_seekbar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/mic"
+        android:layout_alignLeft="@+id/speed_seekbar"
+        android:layout_alignStart="@+id/speed_seekbar"
+        android:layout_marginTop="24dp"
+        android:id="@+id/speech_view" />
 
 </RelativeLayout>
