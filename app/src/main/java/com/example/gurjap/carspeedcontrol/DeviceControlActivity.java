@@ -65,21 +65,20 @@ ImageView mic;
         speed= (SeekBar) findViewById(R.id.speed_seekbar);
         direction= (SeekBar) findViewById(R.id.direction_seekbar);
         horn= (ToggleButton) findViewById(R.id.horn);
-mic= (ImageView) findViewById(R.id.mic);
-speech_view= (AppCompatTextView) findViewById(R.id.speech_view);
-stop_btn= (AppCompatButton) findViewById(R.id.stop_btn);
+        mic= (ImageView) findViewById(R.id.mic);
+        speech_view= (AppCompatTextView) findViewById(R.id.speech_view);
+        stop_btn= (AppCompatButton) findViewById(R.id.stop_btn);
 
         stop_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 speed.setProgress(100);
                 direction.setProgress(100);
-onchange_values();
+        onchange_values();
             }
         });
         speed.setProgress(100);
         direction.setProgress(100);
-
         speed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -300,6 +299,17 @@ Direction_var=Direction_var+"R";
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     speech_view.setText(result.get(0));
+                    switch (result.get(0)){
+                        case "forward":speed.setProgress(199);break;
+                        case "backward":speed.setProgress(0);break;
+                        case "left":direction.setProgress(0);break;
+                        case "right":direction.setProgress(199);break;
+                        case "normal":direction.setProgress(100);break;
+                        case "stop":speed.setProgress(100);direction.setProgress(100);break;
+                        case "sound":if(horn.isChecked())horn.setChecked(false);
+                                else horn.setChecked(true);
+                            }
+                    onchange_values();
                 }
                 break;
             }
