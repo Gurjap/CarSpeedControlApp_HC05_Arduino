@@ -1,18 +1,22 @@
 package com.example.gurjap.carspeedcontrol;
 
+
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-/**
- * Created by Gurjap on 10/5/2016.
- */
+
+
+
 public abstract class BaseActivity extends AppCompatActivity {
- static final int REQUEST_CONNECT_DEVICE = 1;
+
+    // Intent request codes
+    static final int REQUEST_CONNECT_DEVICE = 1;
     static final int REQUEST_ENABLE_BT = 2;
 
+    // Message types sent from the DeviceConnector Handler
     public static final int MESSAGE_STATE_CHANGE = 1;
     public static final int MESSAGE_READ = 2;
     public static final int MESSAGE_WRITE = 3;
@@ -22,12 +26,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     BluetoothAdapter btAdapter;
 
     private static final String SAVED_PENDING_REQUEST_ENABLE_BT = "PENDING_REQUEST_ENABLE_BT";
-    boolean pendingRequestEnableBt = false;
+  boolean pendingRequestEnableBt = false;
 
     @Override
     protected void onCreate(Bundle state) {
         super.onCreate(state);
-        getSupportActionBar().setHomeButtonEnabled(false);
+     getSupportActionBar().setHomeButtonEnabled(false);
 
         if (state != null) {
             pendingRequestEnableBt = state.getBoolean(SAVED_PENDING_REQUEST_ENABLE_BT);
@@ -36,8 +40,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (btAdapter == null) {
             final String no_bluetooth = getString(R.string.no_bt_support);
             showAlertDialog(no_bluetooth);
+
         }
-}
+    }
+    // ==========================================================================
 
 
     @Override
@@ -52,7 +58,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     public synchronized void onResume() {
         super.onResume();
@@ -64,11 +69,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onPause();
     }
 
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(SAVED_PENDING_REQUEST_ENABLE_BT, pendingRequestEnableBt);
     }
+
     boolean isAdapterReady() {
         return (btAdapter != null) && (btAdapter.isEnabled());
     }
@@ -80,4 +87,5 @@ public abstract class BaseActivity extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+    // ==========================================================================
 }

@@ -13,7 +13,7 @@ package com.example.gurjap.carspeedcontrol;
         import android.util.AttributeSet;
         import android.widget.SeekBar;
 
-class CustomSeekBar extends SeekBar {
+public class CustomSeekBar extends SeekBar {
 
     private Rect rect;
     private Paint paint ;

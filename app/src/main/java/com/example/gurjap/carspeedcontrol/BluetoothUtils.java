@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Gurjap on 10/5/2016.
- */
 public class BluetoothUtils {
     private static final String TAG = "BluetoothUtils";
     private static final boolean D = true;
@@ -171,7 +168,10 @@ public class BluetoothUtils {
         return getDeviceServices(uuids);
     }
 
-  public static BluetoothSocket createRfcommSocket(BluetoothDevice device) {
+    /**
+     * see http://habrahabr.ru/post/144547/
+     */
+    public static BluetoothSocket createRfcommSocket(BluetoothDevice device) {
         BluetoothSocket tmp = null;
         try {
             Class class1 = device.getClass();

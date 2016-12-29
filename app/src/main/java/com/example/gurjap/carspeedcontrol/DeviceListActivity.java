@@ -16,6 +16,7 @@
 
 package com.example.gurjap.carspeedcontrol;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -23,7 +24,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,7 +38,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public class DeviceListActivity extends AppCompatActivity {
+/**
+ * This Activity appears as a dialog. It lists already paired devices,
+ * and it can scan for devices nearby. When the user selects a device,
+ * its MAC address is returned to the caller as the result of this activity.
+ */
+public class DeviceListActivity extends Activity {
 
     private static final String TAG = "DeviceListActivity";
     private static final boolean D = false;
@@ -58,8 +63,11 @@ public class DeviceListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.device_list);
 
-        setResult(AppCompatActivity.RESULT_CANCELED);
-  scanButton = (Button) findViewById(R.id.button_scan);
+        // Set default result to CANCELED, in case the user backs out
+        setResult(Activity.RESULT_CANCELED);
+
+        // Initialize the button to perform device discovery
+        scanButton = (Button) findViewById(R.id.button_scan);
         scanButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 doDiscovery();
@@ -114,7 +122,10 @@ public class DeviceListActivity extends AppCompatActivity {
         this.unregisterReceiver(mReceiver);
     }
 
-   private void doDiscovery() {
+    /**
+     * Start device discover with the BluetoothAdapter
+     */
+    private void doDiscovery() {
         if (D) Log.d(TAG, "doDiscovery()");
         mNewDevicesArrayAdapter.clear();
         mNewDevicesSet.clear();
@@ -127,16 +138,18 @@ public class DeviceListActivity extends AppCompatActivity {
 
     private final OnItemClickListener mDeviceClickListener = new OnItemClickListener() {
         public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
-           mBtAdapter.cancelDiscovery();
+            // Cancel discovery because it's costly and we're about to connect
+            mBtAdapter.cancelDiscovery();
 
-           CharSequence info = ((TextView) v).getText();
+            // Get the device MAC address, which is the last 17 chars in the View
+            CharSequence info = ((TextView) v).getText();
             if (info != null) {
                 // TODO this is not so cool...
                 CharSequence address = info.toString().substring(info.length() - 17);
                 Intent intent = new Intent();
                 intent.putExtra(EXTRA_DEVICE_ADDRESS, address);
 
-                setResult(AppCompatActivity.RESULT_OK, intent);
+                setResult(Activity.RESULT_OK, intent);
                 finish();
             }
         }

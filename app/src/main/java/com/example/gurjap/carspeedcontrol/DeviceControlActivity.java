@@ -47,7 +47,7 @@ public final class DeviceControlActivity extends BaseActivity  {
 
     private String deviceName;
     static String tobesend;
-    static DeviceControlActivity a=new DeviceControlActivity();
+  //  static DeviceControlActivity a=new DeviceControlActivity();
     String speed_var="00";
     String Direction_var="00";
 ImageView mic;
@@ -95,12 +95,12 @@ ImageView mic;
 
             }
         });
-        mic.setOnClickListener(new View.OnClickListener() {
+       /* mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 gotopromtmic();
             }
-        });
+        });*/
         horn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -145,7 +145,7 @@ ImageView mic;
 
     }
 
-    private void gotopromtmic() {
+    /*private void gotopromtmic() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
@@ -162,7 +162,7 @@ ImageView mic;
 
 
 
-    }
+    }*/
 
 
 
@@ -288,7 +288,7 @@ Direction_var=Direction_var+"R";
 
     }
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -314,9 +314,9 @@ Direction_var=Direction_var+"R";
                 break;
             }
 
-        }
-    }
 
+    }
+*/
     private void setupConnector(BluetoothDevice connectedDevice) {
         stopConnection();
         try {
